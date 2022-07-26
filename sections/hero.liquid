@@ -1,0 +1,45 @@
+<section class="container py-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1>{{ section.settings.title }}</h1>
+            {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: '600x450' }}" alt="{{ section.settings.image }}">
+            {% else %}
+                {{ 'product-1' | placeholder_svg_tag}}
+            {% endif %}
+            {{ section.settings.description }}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Hero",
+    "class": "hero-section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Hero image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "default": "Featured product",
+            "label": "Hero title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "default": "<p>The best you can get</p>",
+            "label": "Hero description"
+        }
+    ],
+   "presets": [
+    {
+        "category": "Hero",
+        "name":"Sample Hero"
+    }
+   ]
+}
+{% endschema %}
